@@ -90,6 +90,7 @@ void TBright::DacMode(void)
 
 void TBright::PwmMode(void)
 {
+#if PWM_ENA  
   RCC->APB2ENR |= RCC_APB2ENR_TIM15EN;   //включение тактирования TIM15
   TIM15->PSC = 0;                        //прескалер
   TIM15->ARR = PWM_MAX;                  //период
@@ -114,18 +115,21 @@ void TBright::PwmMode(void)
 
   SetMeter(BrMeter);                     //установка яркости линеек
   SetScale(BrScale);                     //установка яркости транспарантов
+#endif  
 }
 
 //--------------------------- Выключение ШИМ: --------------------------------
 
 void TBright::PwmOff(void)
 {
+#if PWM_ENA  
   TIM15->CCER = 0;                        //OC1 and OC2 disable
   TIM15->BDTR = 0;                        //main output disable
   TIM15->CR1 = 0;                         //запрещение таймера
   RCC->APB2ENR &= ~RCC_APB2ENR_TIM15EN;   //выключение тактирования TIM15
   Pin_PWM1.Init(IN_ANALOG);               //настройка пина PWM1
   Pin_PWM2.Init(IN_ANALOG);               //настройка пина PWM2
+#endif  
 }
 
 //----------------------------------------------------------------------------
@@ -136,7 +140,8 @@ void TBright::PwmOff(void)
 
 void TBright::SetMode(uint8_t m)
 {
-  if(BrMode != m)
+#if PWM_ENA  
+  if(BrMode != m) 
   {
     switch(m)
     {
@@ -147,28 +152,33 @@ void TBright::SetMode(uint8_t m)
     }
     BrMode = m;
   }
+#endif  
 }
 
 //------------------------ Установка яркости линеек: -------------------------
 
 void TBright::SetMeter(uint8_t b)
 {
+#if PWM_ENA  
   if(b > PER_MAX) b = PER_MAX;
   BrMeter = b;
   uint16_t v = b * PWM_MAX / PER_MAX;
   if(BrMode == BRM_DAC) Dac2 = v << 4;
   if(BrMode == BRM_PWM) TIM15->CCR2 = v;
+#endif  
 }
 
 //------------------- Установка яркости подсветки шкалы: ---------------------
 
 void TBright::SetScale(uint8_t b)
 {
+#if PWM_ENA  
   if(b > PER_MAX) b = PER_MAX;
   BrScale = b;
   uint16_t v = b * PWM_MAX / PER_MAX;
   if(BrMode == BRM_DAC) Dac1 = v << 4;
   if(BrMode == BRM_PWM) TIM15->CCR1 = v;
+#endif  
 }
 
 //--------------------- Чтение параметров из EEPROM: -------------------------
