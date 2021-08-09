@@ -1,0 +1,10 @@
+{
+    "cortex.device":"STM32F103",
+    "cortex.msysPath_bin": "C:\\msys\\1.0\\bin",
+    "files.associations": {
+        "type_traits": "cpp"
+    },
+    "OPENOCD": "~/Work/embedded/openocd-0.10.0-14/scripts/board",
+    "cortex-debug.armToolchainPath": "E:\\VSCODE-CORTEXDEBUG\\TOOLS\\GNUARM\\BIN",
+    "cortex-debug.openocdPath": "E:\\VSCODE-CORTEXDEBUG\\TOOLS\\OPENOCD\\BIN\\OPENOCD.EXE"
+}

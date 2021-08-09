@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+embedded/source/.vscode/.cortex-debug.registers.state.json
+embedded/source/.vscode/.cortex-debug.peripherals.state.json

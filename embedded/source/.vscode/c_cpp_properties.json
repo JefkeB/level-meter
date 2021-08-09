@@ -1,0 +1,29 @@
+{
+  "configurations": [
+      {
+          "name": "gcc",
+          "includePath": [
+              "${workspaceFolder}/source",
+              "${workspaceFolder}/source/_package_/samd21a/include",
+              "${workspaceFolder}/source/cmsis/Include"
+          ],
+          "defines": [
+              "__SAMD21G18A__",
+              "DEBUG"
+          ],
+          "compilerPath": "${env:GNUARM}",
+          "cStandard": "c11",
+          "cppStandard": "c++17",
+          "intelliSenseMode": "gcc-x64",
+          "browse": {
+              "path": [
+                  "${workspaceFolder}",
+                  "${env:GNUARM}"
+              ],
+              "limitSymbolsToIncludedHeaders": true,
+              "databaseFilename": ""
+          }
+      }
+  ],
+  "version": 4
+}

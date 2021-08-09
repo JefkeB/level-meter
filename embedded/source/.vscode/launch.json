@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [        
+        {
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "name": "Debug (OpenOCD)",
+            "cwd": "${workspaceFolder}",
+            "windows" : {
+                "executable": "main.elf",
+                "configFiles": [
+                    "${env:OPENOCD}/share/openocd/scripts/board/stm32f103c8_blue_pill.cfg"
+                ],
+            },
+            "linux" : {
+                "executable": "main.elf",
+                "configFiles": [
+                    "/home/jef/Work/embedded/openocd-0.10.0-14/scripts/board/stm32f103c8_blue_pill.cfg"
+                ]
+            },
+            "device":"${config:cortex.device}",
+            "svdFile": "${workspaceFolder}/CMSIS/SVD/${config:cortex.device}.svd",
+            "showDevDebugOutput": false,
+            "runToMain": false,
+            "preLaunchTask": "build"
+        }
+    ]
+}
