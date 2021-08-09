@@ -110,7 +110,6 @@ CPPFLAGS += -D$(ST_MCU_DEF)
 CPPFLAGS += -DVVC_$(MCU_CLASS)
 CPPFLAGS += -DVVC_$(MCU)
 
-CPPFLAGS += -DSTM32F10X_MD
 CPPFLAGS += -DMETER50
 
 # Linker directives.
@@ -159,7 +158,6 @@ CPP_SRC  += source/wakeport.cpp
 
 INCLUDE  += -I.
 INCLUDE  += -I./source
-INCLUDE  += -I./source/sys
 INCLUDE  += -I./CMSIS/Device/Include
 INCLUDE  += -I./CMSIS/Include
 
@@ -168,7 +166,7 @@ OBJS += $(CPP_SRC:.cpp=.o)
 OBJS += $(AS_SRC:.S=.o)
 
 .PHONY: all
-all: $(TARGET).bin
+all: $(TARGET).bin $(TARGET).hex
 
 %.o: %.S
 	$(AS) $(ASFLAGS) -c $< -o $@
@@ -185,6 +183,9 @@ $(TARGET).elf: $(OBJS)
 $(TARGET).bin: $(TARGET).elf
 	$(OC) -S -O binary $< $@
 	$(OS) $<
+
+$(TARGET).hex: $(TARGET).elf
+	$(OC) -O ihex $^ $@
 
 .PHONY: clean
 clean:

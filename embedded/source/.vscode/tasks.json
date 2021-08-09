@@ -1,14 +1,93 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "build",
-			"windows": {
-				"command": "make.exe",
-				"args": [
-					"DEBUG=GDB"
-				]
-			},
-		}
-	]
+    "version": "2.0.0",
+    "type":"shell",    
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated"
+    },
+    "windows": {
+        "options": {
+            "env": { "Path":"${env:MSYS}/bin;${env:GNUARM}/bin;${env:OPENOCD}/bin;%Path%" }
+        }
+    },
+    "tasks": [
+        {
+            "label": "build",
+            "windows": {
+                "command": "make.exe",
+                "args": [
+                    "DEBUG=GDB"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "DEBUG=GDB"
+                ]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": "relative"
+            }
+        },
+        {
+            "label": "clean",
+            "windows": {
+                "command": "make.exe",
+                "args": [
+                    "clean"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "clean"
+                ]
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "program",
+            "windows": {
+                "command": "openocd",
+                "args": [
+                    "-f",
+                    "./openocd/openocd_program.cfg"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "-j${env:NUMBER_OF_PROCESSORS}",
+                    "program",
+                    "OPENOCD_CONFIG=./source/openocd/openocd.cfg"
+                ]
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "reset",
+            "windows": {
+                "command": "openocd",
+                "args": [
+                    "-f",
+                    "./openocd/openocd_reset.cfg"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "program",
+                    "OPENOCD_CONFIG=./source/openocd/openocd_reset.cfg"
+                ]
+            },
+            "problemMatcher": []
+        }  
+    ]
 }

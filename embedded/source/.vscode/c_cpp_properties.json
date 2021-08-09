@@ -4,11 +4,12 @@
           "name": "gcc",
           "includePath": [
               "${workspaceFolder}/source",
-              "${workspaceFolder}/source/_package_/samd21a/include",
-              "${workspaceFolder}/source/cmsis/Include"
+              "${workspaceFolder}/source",
+              "${workspaceFolder}/CMSIS/Include",
+              "${workspaceFolder}/CMSIS/Device/Include"
           ],
           "defines": [
-              "__SAMD21G18A__",
+              "METER50",
               "DEBUG"
           ],
           "compilerPath": "${env:GNUARM}",

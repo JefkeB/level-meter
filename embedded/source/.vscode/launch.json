@@ -10,9 +10,10 @@
             "windows" : {
                 "executable": "main.elf",
                 "configFiles": [
-                    "${env:OPENOCD}/share/openocd/scripts/board/stm32f103c8_blue_pill.cfg"
+                    "${workspaceFolder}/openocd/stm32f103c8_blue_pill.cfg"
                 ],
             },
+            
             "linux" : {
                 "executable": "main.elf",
                 "configFiles": [
