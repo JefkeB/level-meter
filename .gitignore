@@ -32,3 +32,6 @@
 *.app
 embedded/source/.vscode/.cortex-debug.registers.state.json
 embedded/source/.vscode/.cortex-debug.peripherals.state.json
+embedded/source/main.bin
+embedded/source/main.elf
+embedded/source/main.map

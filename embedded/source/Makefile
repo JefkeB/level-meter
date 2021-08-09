@@ -110,7 +110,7 @@ CPPFLAGS += -D$(ST_MCU_DEF)
 CPPFLAGS += -DVVC_$(MCU_CLASS)
 CPPFLAGS += -DVVC_$(MCU)
 
-CPPFLAGS += -DSTM32F10X_HD_VL
+CPPFLAGS += -DSTM32F10X_MD
 CPPFLAGS += -DMETER50
 
 # Linker directives.
@@ -189,7 +189,7 @@ $(TARGET).bin: $(TARGET).elf
 .PHONY: clean
 clean:
 	#rm -f $(OBJS)
-	rm -f ./src/*.o
+	rm -f ./source/*.o
 	rm -f $(TARGET).elf
 	rm -f $(TARGET).bin
 	rm -f $(TARGET).map
