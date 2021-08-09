@@ -35,6 +35,7 @@ public:
 template<dacs_t DacN>
 void TDac<DacN>::Init(void)
 {
+#ifdef DAC_AVAIL
   Pin_DAC.Init(IN_ANALOG);            //настройка порта DAC
   RCC->APB1ENR |= RCC_APB1ENR_DACEN;  //включение тактирования DAC
 
@@ -60,6 +61,7 @@ void TDac<DacN>::Init(void)
       DAC_CR_BOFF2     * DAC_BOFF | //buffer on/off
       DAC_CR_EN2       * 1;  //DAC2 enable
   }
+#endif  
 }
 
 //----------------------------- Отключение: ----------------------------------
@@ -67,6 +69,7 @@ void TDac<DacN>::Init(void)
 template<dacs_t DacN>
 void TDac<DacN>::Off(void)
 {
+#ifdef DAC_AVAIL
   Pin_DAC.Init(IN_ANALOG);   //настройка порта DAC
   if(DacN == DAC1) //сравнение констант, оптимизатор уберет ненужное
   {
@@ -78,6 +81,7 @@ void TDac<DacN>::Off(void)
     DAC->CR &= ~DAC_CR_EN2;  //DAC2 disable
     if((DAC->CR & DAC_CR_EN1) == 0) RCC->APB1ENR &= ~RCC_APB1ENR_DACEN;
   }
+#endif 
 }
 
 //------------------------------ Загрузка: -----------------------------------
@@ -85,6 +89,7 @@ void TDac<DacN>::Off(void)
 template<dacs_t DacN>
 void TDac<DacN>::operator = (uint16_t Value)
 {
+#ifdef DAC_AVAIL
   //ограничение диапазона:
   if(Value > DAC_MAX_CODE) Value = DAC_MAX_CODE;
   //загрузка:
@@ -96,6 +101,7 @@ void TDac<DacN>::operator = (uint16_t Value)
   {
     DAC->DHR12R2 = Value;
   }
+#endif 
 }
 
 //----------------------------------------------------------------------------
