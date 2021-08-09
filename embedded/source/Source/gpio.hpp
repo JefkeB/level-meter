@@ -7,6 +7,8 @@
 #ifndef GPIO_H
 #define	GPIO_H
 
+#include <stdint.h>
+
 //-------------------------- Базовые адреса портов: --------------------------
 
 #ifdef GPIOA_BASE
@@ -100,7 +102,8 @@ public:
 };
 
 //------------------------- Реализация методов: ------------------------------
-
+#pragma GCC diagnostic push 
+#pragma GCC diagnostic ignored "-Wparentheses"
 template<uint32_t Port, uint8_t Pin, bool = Pin >= 8>
 struct GpioInit
 {
@@ -108,10 +111,14 @@ struct GpioInit
   {
     reinterpret_cast<GPIO_TypeDef*>(Port)->CRH =
       reinterpret_cast<GPIO_TypeDef*>(Port)->CRH &
-        ((~(0x0f << ((Pin - 8) * 4))) | (Mode << ((Pin - 8) * 4)));
+        (~(0x0f << ((Pin - 8) * 4))) | (Mode << ((Pin - 8) * 4));
   }
 };
+#pragma GCC diagnostic pop
 
+
+#pragma GCC diagnostic push 
+#pragma GCC diagnostic ignored "-Wparentheses"
 template<uint32_t Port, uint8_t Pin>
 struct GpioInit<Port, Pin, 0>
 {
@@ -119,9 +126,10 @@ struct GpioInit<Port, Pin, 0>
   {
     reinterpret_cast<GPIO_TypeDef*>(Port)->CRL =
       reinterpret_cast<GPIO_TypeDef*>(Port)->CRL &
-        ((~(0x0f << (Pin * 4))) | (Mode << (Pin * 4)));
+        (~(0x0f << (Pin * 4))) | (Mode << (Pin * 4));
   }
 };
+#pragma GCC diagnostic pop
 
 template<uint32_t Port, uint8_t Pin>
 inline void TGpio<Port, Pin>::Init(PinMode_t Mode)
