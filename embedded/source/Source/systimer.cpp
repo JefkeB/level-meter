@@ -133,7 +133,7 @@ void TSysTimer::Delay_us(uint16_t d)
     Delta = DelayStart - SysTick->VAL;
     if(Delta < 0) Delta += CLK_PER_MS;
   }
-  while(Delta < DelayTicks);
+  while(Delta < (int32_t)DelayTicks);
 }
 
 //-------------- Функция задержки миллисекундного диапазона: -----------------
@@ -159,7 +159,7 @@ bool TSysTimer::TimeoutOver_us(void)
 {
   int32_t Delta = Start_us - SysTick->VAL;
   if(Delta < 0) Delta += CLK_PER_MS;
-  return(Delta >= Interval_us);
+  return(Delta >= (int32_t)Interval_us);
 }
 
 //------------------ Таймаут миллисекундного диапазона: ----------------------

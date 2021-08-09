@@ -129,7 +129,7 @@ void TControl::InitTest(void)
 
 //---------------------- Чтение измеренных значений: -------------------------
 
-#pragma inline = forced
+__attribute__((always_inline)) inline
 void TControl::ReadValues(void)
 {
   if(DispMode & DP_BAR)
@@ -167,7 +167,7 @@ void TControl::ReadValues(void)
 
 //-------------------------- Отображение уровня: -----------------------------
 
-#pragma inline = forced
+__attribute__((always_inline)) inline
 void TControl::DisplayValues(void)
 {
   PeakSegL    = SEGS;

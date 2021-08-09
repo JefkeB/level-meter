@@ -304,6 +304,7 @@ bool TWake::Tx(uint8_t &data)
   {
     data = *TxPtr++;                 //то чтение байта из буфера
     if(data == FEND || data == FESC) //попытка передать FEND или FESC,
+    {
       if(!TxStuff)                   //нужен стаффинг
       {
         data = FESC;                 //передача FESC
@@ -316,6 +317,7 @@ bool TWake::Tx(uint8_t &data)
           else data = TFESC;         //или TFESC
         TxStuff = 0;                 //конец стаффинга
       }
+    }
     if(TxPtr > TxEnd)                //если конец буфера достигнут,
       TxState = WST_CRC;             //передается CRC
     return(1);

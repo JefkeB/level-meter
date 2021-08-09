@@ -108,7 +108,7 @@ struct GpioInit
   {
     reinterpret_cast<GPIO_TypeDef*>(Port)->CRH =
       reinterpret_cast<GPIO_TypeDef*>(Port)->CRH &
-        (~(0x0f << ((Pin - 8) * 4))) | (Mode << ((Pin - 8) * 4));
+        ((~(0x0f << ((Pin - 8) * 4))) | (Mode << ((Pin - 8) * 4)));
   }
 };
 
@@ -119,7 +119,7 @@ struct GpioInit<Port, Pin, 0>
   {
     reinterpret_cast<GPIO_TypeDef*>(Port)->CRL =
       reinterpret_cast<GPIO_TypeDef*>(Port)->CRL &
-        (~(0x0f << (Pin * 4))) | (Mode << (Pin * 4));
+        ((~(0x0f << (Pin * 4))) | (Mode << (Pin * 4)));
   }
 };
 

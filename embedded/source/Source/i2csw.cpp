@@ -87,7 +87,7 @@ bool TI2Csw::Write(uint8_t data)
 
 uint8_t TI2Csw::Read(bool ack)
 {
-  uint8_t data;
+  uint8_t data = 0;
   for(uint8_t i = 0; i < 8; i++)
   {
     Pin_SCL = 0;

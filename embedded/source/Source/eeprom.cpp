@@ -127,7 +127,10 @@ void TEeprom::Wr16(uint16_t addr, uint16_t data)
 
 uint16_t TEeprom::Read(uint16_t addr, uint16_t def)
 {
-  if(fValid) return(Rd16(addr)); return(def);
+  if(fValid) 
+    return(Rd16(addr)); 
+    
+  return(def);
 }
 
 //----------------- «апись данных с проверкой обновлени€: --------------------
