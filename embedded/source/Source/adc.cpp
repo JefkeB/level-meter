@@ -111,18 +111,18 @@ TAdc::TAdc(chan_t chan, uint16_t *buff)
     DMA1_Channel5->CNDTR = ADC_DCM * 2;          //buffer size
 
     DMA1_Channel5->CCR =
-      DMA_CCR5_MEM2MEM * 0 |          //memory to memory off
-      DMA_CCR5_PL_0    * 2 |          //high priority
-      DMA_CCR5_MSIZE_0 * 1 |          //mem. size 16 bit
-      DMA_CCR5_PSIZE_0 * 1 |          //periph. size 16 bit
-      DMA_CCR5_MINC    * 1 |          //memory increment enable
-      DMA_CCR5_PINC    * 0 |          //periph. increment disable
-      DMA_CCR5_CIRC    * 1 |          //circular mode enable
-      DMA_CCR5_DIR     * 0 |          //direction - from periph.
-      DMA_CCR5_TEIE    * 0 |          //transfer error interrupt disable
-      DMA_CCR5_HTIE    * 0 |          //half transfer interrupt disable
-      DMA_CCR5_TCIE    * 0 |          //transfer complete interrupt disable
-      DMA_CCR5_EN      * 1;           //DMA enable
+      DMA_CCR_MEM2MEM * 0 |          //memory to memory off
+      DMA_CCR_PL_0    * 2 |          //high priority
+      DMA_CCR_MSIZE_0 * 1 |          //mem. size 16 bit
+      DMA_CCR_PSIZE_0 * 1 |          //periph. size 16 bit
+      DMA_CCR_MINC    * 1 |          //memory increment enable
+      DMA_CCR_PINC    * 0 |          //periph. increment disable
+      DMA_CCR_CIRC    * 1 |          //circular mode enable
+      DMA_CCR_DIR     * 0 |          //direction - from periph.
+      DMA_CCR_TEIE    * 0 |          //transfer error interrupt disable
+      DMA_CCR_HTIE    * 0 |          //half transfer interrupt disable
+      DMA_CCR_TCIE    * 0 |          //transfer complete interrupt disable
+      DMA_CCR_EN      * 1;           //DMA enable
 
     TIM2->CCR1 = TIM2->ARR / 2;       //CC1 register load
     TIM2->DIER |= TIM_DIER_CC1DE;     //CC1 DMA request enable
@@ -135,18 +135,18 @@ TAdc::TAdc(chan_t chan, uint16_t *buff)
     DMA1_Channel7->CNDTR = ADC_DCM * 2;          //buffer size
 
     DMA1_Channel7->CCR =
-      DMA_CCR7_MEM2MEM * 0 |          //memory to memory off
-      DMA_CCR7_PL_0    * 2 |          //high priority
-      DMA_CCR7_MSIZE_0 * 1 |          //mem. size 16 bit
-      DMA_CCR7_PSIZE_0 * 1 |          //periph. size 16 bit
-      DMA_CCR7_MINC    * 1 |          //memory increment enable
-      DMA_CCR7_PINC    * 0 |          //periph. increment disable
-      DMA_CCR7_CIRC    * 1 |          //circular mode enable
-      DMA_CCR7_DIR     * 0 |          //direction - from periph.
-      DMA_CCR7_TEIE    * 0 |          //transfer error interrupt disable
-      DMA_CCR7_HTIE    * 0 |          //half transfer interrupt disable
-      DMA_CCR7_TCIE    * 0 |          //transfer complete interrupt disable
-      DMA_CCR7_EN      * 1;           //DMA enable
+      DMA_CCR_MEM2MEM * 0 |          //memory to memory off
+      DMA_CCR_PL_0    * 2 |          //high priority
+      DMA_CCR_MSIZE_0 * 1 |          //mem. size 16 bit
+      DMA_CCR_PSIZE_0 * 1 |          //periph. size 16 bit
+      DMA_CCR_MINC    * 1 |          //memory increment enable
+      DMA_CCR_PINC    * 0 |          //periph. increment disable
+      DMA_CCR_CIRC    * 1 |          //circular mode enable
+      DMA_CCR_DIR     * 0 |          //direction - from periph.
+      DMA_CCR_TEIE    * 0 |          //transfer error interrupt disable
+      DMA_CCR_HTIE    * 0 |          //half transfer interrupt disable
+      DMA_CCR_TCIE    * 0 |          //transfer complete interrupt disable
+      DMA_CCR_EN      * 1;           //DMA enable
 
     TIM2->CCR2 = TIM2->ARR;           //CC2 register load
     TIM2->DIER |= TIM_DIER_CC2DE;     //CC2 DMA request enable

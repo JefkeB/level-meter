@@ -11,7 +11,7 @@
 
 #define __STDC_LIMIT_MACROS
 #include <stdint.h>
-#include "stm32f10x.h"
+#include "stm32f1xx.h"
 #include "gpio.hpp"
 #include "systimer.hpp"
 
