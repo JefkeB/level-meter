@@ -138,26 +138,27 @@ LFLAGS += -specs=nosys.specs
 LFLAGS += -specs=nano.specs
 
 # Source files.
+SRC_FOLDER = Source
 #AS_SRC    = src/sys/startup_stm32f10x_md_vl.S
 #AS_SRC    = ./CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f103xb.S
 AS_SRC    = ./CMSIS/Device/Source/Templates/gcc/startup_stm32f103xb.S
 #AS_SRC   += vector_tables/$(MCU_FILES)_vt.S
-CPP_SRC  += source/adc.cpp
-CPP_SRC  += source/bright.cpp
-CPP_SRC  += source/control.cpp
-CPP_SRC  += source/display.cpp
-CPP_SRC  += source/eeprom.cpp
-CPP_SRC  += source/i2csw.cpp
-CPP_SRC  += source/main.cpp
-CPP_SRC  += source/port.cpp
-CPP_SRC  += source/process.cpp
-CPP_SRC  += source/sreg.cpp
-CPP_SRC  += source/systimer.cpp
-CPP_SRC  += source/wake.cpp
-CPP_SRC  += source/wakeport.cpp
+CPP_SRC  += $(SRC_FOLDER)/adc.cpp
+CPP_SRC  += $(SRC_FOLDER)/bright.cpp
+CPP_SRC  += $(SRC_FOLDER)/control.cpp
+CPP_SRC  += $(SRC_FOLDER)/display.cpp
+CPP_SRC  += $(SRC_FOLDER)/eeprom.cpp
+CPP_SRC  += $(SRC_FOLDER)/i2csw.cpp
+CPP_SRC  += $(SRC_FOLDER)/main.cpp
+CPP_SRC  += $(SRC_FOLDER)/port.cpp
+CPP_SRC  += $(SRC_FOLDER)/process.cpp
+CPP_SRC  += $(SRC_FOLDER)/sreg.cpp
+CPP_SRC  += $(SRC_FOLDER)/systimer.cpp
+CPP_SRC  += $(SRC_FOLDER)/wake.cpp
+CPP_SRC  += $(SRC_FOLDER)/wakeport.cpp
 
 INCLUDE  += -I.
-INCLUDE  += -I./source
+INCLUDE  += -I./$(SRC_FOLDER)
 INCLUDE  += -I./CMSIS/Device/Include
 INCLUDE  += -I./CMSIS/Include
 

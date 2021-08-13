@@ -3,8 +3,8 @@
       {
           "name": "gcc",
           "includePath": [
-              "${workspaceFolder}/source",
-              "${workspaceFolder}/source",
+              "${workspaceFolder}/Source",
+              "${workspaceFolder}/Source",
               "${workspaceFolder}/CMSIS/Include",
               "${workspaceFolder}/CMSIS/Device/Include"
           ],

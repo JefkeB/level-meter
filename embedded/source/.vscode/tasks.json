@@ -62,11 +62,10 @@
                 ]
             },
             "linux": {
-                "command": "make",
+                "command": "openocd",
                 "args": [
-                    "-j${env:NUMBER_OF_PROCESSORS}",
-                    "program",
-                    "OPENOCD_CONFIG=./source/openocd/openocd.cfg"
+                    "-f",
+                    "./openocd/openocd_program.cfg"
                 ]
             },
             "problemMatcher": []
@@ -81,10 +80,10 @@
                 ]
             },
             "linux": {
-                "command": "make",
+                "command": "openocd",
                 "args": [
-                    "program",
-                    "OPENOCD_CONFIG=./source/openocd/openocd_reset.cfg"
+                    "-f",
+                    "./openocd/openocd_reset.cfg"
                 ]
             },
             "problemMatcher": []
